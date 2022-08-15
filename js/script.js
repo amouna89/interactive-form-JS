@@ -21,16 +21,15 @@ if (target.value === "other"){
 /*hide the color select field when the page first loads */
 var Select_color = document.getElementById("shirt-colors");
 Select_color.style.display ="none";
-// var colors = document.querySelectorAll("#color");
+
 var colors = document.getElementById("color");
+console.log(colors);
 /*When you select a design and choose a value*/ 
 var shirt_design = document.getElementById("design");
 shirt_design.addEventListener("change",(event)=>{
 
     const target = event.target;
-
     Select_color.style.display ="";
-
     if (target.value === "js puns"){
         colors[1].hidden = true;
         colors[2].hidden = true;
@@ -80,6 +79,39 @@ Activities.addEventListener("change",(event)=>{
 
 
 });
+/*when the page loads for the first time, the only payement option should be credit card */
+
+var payement =document.getElementById("payment");
+payement.value ="credit-card"
+var credit_card = document.getElementById("credit-card");
+var paypal = document.getElementById("paypal");
+paypal.style.display="none";
+var bitcoin = document.getElementById("bitcoin");
+bitcoin.style.display ="none";
+console.log(payement.value);
+
+payement.addEventListener("change",(event)=>{
+    var target = event.target.value;
+    console.log(target);
+if(target === "paypal"){
+     paypal.style.display="";
+     bitcoin.style.display ="none";
+     credit_card.style.display="none";
+ }
+if(target === "bitcoin"){
+    bitcoin.style.display ="";
+    paypal.style.display="none";
+    credit_card.style.display="none";
+ }
+ if( target=== "credit-card"){
+    credit_card.style.display="";
+    bitcoin.style.display ="none";
+    paypal.style.display="none";
+ }
+
+});
+
+
 
 
 
