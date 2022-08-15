@@ -21,12 +21,8 @@ if (target.value === "other"){
 /*hide the color select field when the page first loads */
 var Select_color = document.getElementById("shirt-colors");
 Select_color.style.display ="none";
-
 // var colors = document.querySelectorAll("#color");
 var colors = document.getElementById("color");
-
-
-
 /*When you select a design and choose a value*/ 
 var shirt_design = document.getElementById("design");
 shirt_design.addEventListener("change",(event)=>{
@@ -50,13 +46,43 @@ shirt_design.addEventListener("change",(event)=>{
         colors[1].hidden = false;
         colors[2].hidden = false;
         colors[3].hidden = false;
-        //colors[4].hidden = true; : caché
+     
         colors[4].hidden = true;
         colors[5].hidden = true;
         colors[6].hidden = true;
     }
 
-})
+});
+
+const Activities = document.getElementById("activities");
+var total_amount = 0;
+
+Activities.addEventListener("change",(event)=>{
+
+    const target = event.target
+    var p_total =document.getElementById("activities-cost");
+    p_total.innerHTML="";
+    var HTML ="";
+    var activitie_cost = target.getAttribute("data-cost");
+    // activitie_cost is a string and we need to convert it to integer using parseInt method
+    if (target.type =="checkbox"){
+        if (target.checked){
+        total_amount = total_amount + parseInt(activitie_cost);
+        console.log(total_amount);
+        }
+        else{//the checkbox is unchecked
+        total_amount = total_amount - parseInt(activitie_cost);
+        }
+    }
+
+    HTML =`Total: ${total_amount}$`;
+    p_total.innerHTML = HTML;
+
+
+});
+
+
+
 
 
 
