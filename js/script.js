@@ -110,6 +110,15 @@ if(target === "bitcoin"){
  }
 
 });
+/*form validation when using the submit button*/
+
+const button =document.querySelector("button");
+
+button.addEventListener("submit",(event)=>{
+
+    console.log(event.target);
+
+});
 
 
 
