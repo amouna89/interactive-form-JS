@@ -112,11 +112,24 @@ if(target === "bitcoin"){
 });
 /*form validation when using the submit button*/
 
-const button =document.querySelector("button");
+const form =document.querySelector("form");
 
-button.addEventListener("submit",(event)=>{
+form.addEventListener("submit",(event)=>{
+    //the 405 error is caused by running your project via a server, such as the Live Server for VSC. Since it is running on a server it tries to POST the form submission to it, instead of just refreshing the browser. 
+    //You just need to add event.preventDefault() to your submit handler so that the form doesn’t submit.
+    event.preventDefault(); //add this line to your submit handler so that the form doesn’t submit.
+    // console.log(event.target.tagName);
+    console.log(Input_name.value);
 
-    console.log(event.target);
+    //the Name field can not be empty or blank 
+    if (Input_name.value ===""){
+      alert("name field can not be empty");
+      Input_name.focus();
+    }
+
+    //The "Email Address" field must contain a validly formatted email address to do tomorrow
+    
+    //The "Register for Activities" section must have at least one activity selected.
 
 });
 
